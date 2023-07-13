@@ -1,4 +1,4 @@
-## Job Website opener
+# Automatic Website opener
 
 **Note**: This is for Windows users only (*as of now!*) 
 
