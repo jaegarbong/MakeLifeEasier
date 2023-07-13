@@ -1,6 +1,6 @@
 # Automatic Website opener
 
-**Note**: This is for Windows users only (*as of now!*) 
+**Note**: This is for _**Windows**_ users only (*as of now!*) 
 
 This program will help you to open a list of sites that aid you in job search.<br>
 For e.g. I use ChatGPT, a resume editor, a JD reader to identify keywords and my email.
