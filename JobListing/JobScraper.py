@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 from re import match
 from pandas import DataFrame, concat
 
+
 class DSJobScraper:
     def __init__(self):
         self.url = r"https://www.analyticsinsight.net/top-10-data-science-jobs-to-apply-for-this-week/"
@@ -16,13 +17,14 @@ class DSJobScraper:
             h4_tags = soup.find_all("h4")
 
             for h4_tag in h4_tags:
-                strong_tag = h4_tag.find_all("strong")
+                strong_tag = h4_tag.find_all("strong")  # Strong is the child tag
 
                 if len(strong_tag) >= 2:
                     strong_text = strong_tag[1].get_text(strip=True)
 
                     next_sibling = h4_tag.find_next_sibling()
                     if next_sibling and next_sibling.name == 'p':
+                        # P is the next tag after h4 that contains the descriptions
                         details = next_sibling.text
 
                     self.jobs[strong_text] = details
