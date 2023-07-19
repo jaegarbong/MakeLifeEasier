@@ -2,7 +2,7 @@ from requests import get
 from bs4 import BeautifulSoup
 from re import match
 from pandas import DataFrame, concat
-
+from datetime import datetime as dt
 
 class DSJobScraper:
     def __init__(self):
@@ -43,13 +43,15 @@ class DSJobScraper:
                 title = flag.group(1)
                 company = flag.group(2)
                 location = flag.group(3)
+                date = dt.today().strftime("%d-%m-%Y")
                 df = concat(
                     [df,
-                     DataFrame({'title': [title], 'company': [company], 'location': [location], 'description': [v]})])
+                     DataFrame({'date':[date],'title': [title], 'company': [company], 'location': [location], 'description': [v]})])
             else:
                 continue
 
         # Write the csv file.
+        df.drop_duplicates()
         df.to_csv("jobs.csv", index=False)
 
     def write_to_drive(self):
